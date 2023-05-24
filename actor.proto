@@ -1,0 +1,28 @@
+syntax = "proto3";
+package actor;
+// Définition du message actor
+message Actor {
+string id = 1;
+string name = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les Actor au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes
+message GetActorRequest {
+string actor_id = 1;
+}
+message GetActorResponse {
+Actor actor = 1;
+}
+message SearchActorRequest {
+string query = 1;
+}
+message SearchActorResponse {
+repeated Actor actor = 1;
+}
+// Définition du service de Actor
+service ActorService {
+rpc GetActor(GetActorRequest) returns (GetActorResponse);
+rpc SearchActor(SearchActorRequest) returns (SearchActorResponse);
+// Ajouter d'autres méthodes au besoin
+}

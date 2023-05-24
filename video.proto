@@ -1,0 +1,28 @@
+syntax = "proto3";
+package video;
+// Définition du message video
+message Video {
+string id = 1;
+string title = 2;
+string description = 3;
+// Ajouter d'autres champs de données pour les films au besoin
+}
+// Définition des messages de requête et de réponse pour les méthodes d
+message GetVideoRequest {
+string video_id = 1;
+}
+message GetVideoResponse {
+Video video = 1;
+}
+message SearchVideosRequest {
+string query = 1;
+}
+message SearchVideosResponse {
+repeated Video videos = 1;
+}
+// Définition du service de films
+service VideoService {
+rpc GetVideo(GetVideoRequest) returns (GetVideoResponse);
+rpc SearchVideos(SearchVideosRequest) returns (SearchVideosResponse);
+// Ajouter d'autres méthodes au besoin
+}
